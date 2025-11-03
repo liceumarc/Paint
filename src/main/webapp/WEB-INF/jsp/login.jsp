@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
         <!DOCTYPE html>
         <html>
 
@@ -30,7 +31,7 @@
 
             <hr>
 
-            <p>¿Aún no tienes una cuenta? <a href="Register">Regístrate aquí</a></p>
+            <p>¿Aún no tienes una cuenta? <a href="register">Regístrate aquí</a></p>
 
         </body>
  

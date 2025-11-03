@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@WebServlet("/Register")
+@WebServlet("/register")
 public class Register extends HttpServlet {
 
     private static final String REGEX_PASSWORD =  "^(?=.*[0-9])(?=.*[@$!%*#?&])\\S{8,}$";
@@ -20,7 +20,7 @@ public class Register extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/register.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
     }
 
     @Override

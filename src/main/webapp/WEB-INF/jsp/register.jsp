@@ -22,12 +22,12 @@
                 </div>
 
                 <div>
-                    <label for="login">Login (Nombre de Usuario):</label><br>
-                    <input type="text" id="login" name="login" required><br><br>
+                    <label for="login">Login (Nombre de Usuario):</label>
+                    <input type="text" id="login" name="login" required>
                 </div>
 
                 <div>
-                    <label for="password">Contraseña (Mín. 8 chars, 1 mayús, 1 especial, 1 dígito):</label>
+                    <label for="password">Contraseña (Mín. 8 chars, 1 mayús, 1 especial, 1 dígito, sin espacios):</label>
                     <input type="password" id="password" name="password" required minlength="8">
                 </div>
 
