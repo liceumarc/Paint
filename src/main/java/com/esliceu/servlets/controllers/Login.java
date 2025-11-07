@@ -1,7 +1,8 @@
 package com.esliceu.servlets.controllers;
 
+import com.esliceu.servlets.DAOS.UserDAO;
 import com.esliceu.servlets.models.User;
-import com.esliceu.servlets.repository.UserRepository;
+import com.esliceu.servlets.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,11 +24,14 @@ public class Login extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        User user = UserRepository.authenticateUser(login, password);
+        System.out.println("User: " + login);
+
+        // Aquesta funció l'ha de fer el servei
+        User user = UserService.authenticateUser(login, password);
 
         if(user != null){
             req.getSession().setAttribute("currentUser", user.getLogin());
-            resp.sendRedirect("paint.jsp");
+            resp.sendRedirect("/paint");
         } else {
             req.setAttribute("error", "Error: Login o contraseña incorrectos.");
             req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);

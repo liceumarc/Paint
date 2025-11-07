@@ -15,7 +15,7 @@
                 <p>${message}</p>
             </c:if>
 
-            <form method="post" action="Register">
+            <form method="post" action="register">
                 <div>
                     <label for="name">Nombre Completo:</label>
                     <input type="text" id="name" name="name" required>

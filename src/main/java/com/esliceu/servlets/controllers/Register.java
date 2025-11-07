@@ -1,8 +1,7 @@
 package com.esliceu.servlets.controllers;
 
+import com.esliceu.servlets.DAOS.UserDAO;
 import com.esliceu.servlets.models.User;
-import com.esliceu.servlets.repository.UserRepository;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,31 +25,29 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        String name = req.getParameter("name");
         String message = "";
 
         if (!isValid(password)){
             message = "Error: La contraseña debe tener al menos 8 caracteres, una mayuscula y un caracter especial. ";
             req.setAttribute("message", message);
             req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
+            return;
         }
 
         User newUser = new User(login, password, name);
-        boolean success = UserRepository.registerUser(newUser);
+        boolean success = UserDAO.registerUser(newUser);
 
         if (success){
-            /* Registro existoso, inciar sesión automaticamente
-            req.getSession().setAttribute("currentUser", login);
-            resp.sendRedirect("paint.jsp");
-             */
-            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/success.jsp").forward(req, resp);
         } else {
             message = "Error: El login: " + login + " ya está en uso.";
             req.setAttribute("message", message);
             req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
         }
+
     }
 
     private static boolean isValid(String password){

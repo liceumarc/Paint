@@ -17,7 +17,7 @@
 
             <form method="post" action="login">
                 <div>
-                    <label for="login">Login (Nombre de Usuario):</label>
+                    <label for="login">Login:</label>
                     <input type="text" id="login" name="login" required>
                 </div>
 
